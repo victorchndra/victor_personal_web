@@ -1,6 +1,6 @@
 import React from 'react'
 import BlogLayout from '../components/blog/blog-layout'
-import Posts from '../components/blog/posts'
+import BlogPosts from '../components/blog/blog-posts'
 
 export default function BlogCategory() {
 
@@ -44,7 +44,7 @@ export default function BlogCategory() {
 
   return (
     <BlogLayout>
-      <Posts posts={posts} />
+      <BlogPosts posts={posts} />
     </BlogLayout>
   )
 }

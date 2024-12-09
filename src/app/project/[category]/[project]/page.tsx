@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ProjectDetail = () => {
+export default async function ProjectDetail({ params }: { params: Promise<{ project: string }> }) {
+  const projectSlug = (await params).project
+
   return (
-    <div>ProjectDetail</div>
+    <div>{projectSlug}</div>
   )
 }
-
-export default ProjectDetail

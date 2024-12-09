@@ -1,6 +1,6 @@
 import React from 'react'
 import BlogLayout from '@/app/components/blog/blog-layout'
-import Posts from '@/app/components/blog/posts'
+import Posts from '@/app/components/blog/blog-posts'
 
 export default async function BlogList({ params }: { params: Promise<{ category: string }> }) {
   const categorySlug = (await params).category

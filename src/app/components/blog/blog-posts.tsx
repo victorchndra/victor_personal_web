@@ -1,10 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
 
-export default function Posts({ posts }:
+export default function BlogPosts({ posts }:
   {
     posts: {
-      category: { slug: string },
+      category: {
+        name: string,
+        slug: string
+      },
       slug: string,
       date: string,
       title: string,
