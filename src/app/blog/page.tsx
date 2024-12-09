@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
@@ -64,21 +63,17 @@ export default function BlogCategory() {
             <Link key={index} href={`/blog/${category.slug}`} className='px-3 py-1 border border-black'>{category.name}</Link>
           ))}
         </div>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-col">
           {posts.map((post, index) => (
-            <Link key={index} href={`/blog/${post.category.slug}/${post.slug}`} className='group md:w-[calc(50%-8px)] md:mb-0 mb-4 w-full'>
-              <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'>
-                <Image
-                  src={post.thumbnail}
-                  alt={post.title}
-                  width={300}
-                  height={200}
-                  className='object-cover w-full h-full relative'
-                />
+            <Link key={index} href={`/blog/${post.category.slug}/${post.slug}`} className='group w-full'>
+              <div className='hover:bg-slate-50'>
+                <time className='text-xs text-zinc-500'>{post.date}</time>
+                <h3 className='font-medium group-hover:underline mb-2'>{post.title}</h3>
+                <p className='text-sm text-zinc-500'>{post.description}</p>
               </div>
-              <time className='text-xs text-zinc-500'>{post.date}</time>
-              <h3 className='font-medium group-hover:underline mb-2'>{post.title}</h3>
-              <p className='text-sm text-zinc-500'>{post.description}</p>
+              {index !== (posts.length - 1) && (
+                <hr className='my-4' />
+              )}
             </Link>
           ))}
         </div>
