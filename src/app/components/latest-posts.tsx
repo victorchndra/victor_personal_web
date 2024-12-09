@@ -6,17 +6,20 @@ export const LatestPosts = () => {
     {
       date: 'December 4, 2024',
       title: 'How to use Laravel Pint in VSCode?',
-      description: 'Laravel Pint is an opinionated PHP code style fixer based on PHP-CS-Fixer. It helps maintain consistent code style and...'
+      description: 'Laravel Pint is an opinionated PHP code style fixer based on PHP-CS-Fixer. It helps maintain consistent code style and...',
+      thumbnail: '/placeholder.svg?height=200&width=300',
     },
     {
       date: 'November 18, 2024',
       title: 'How to Extract Audio from MKV Files Using FFmpeg',
-      description: 'Laravel Pint is an opinionated PHP code style fixer based on PHP-CS-Fixer. It helps maintain consistent code style and...'
+      description: 'Laravel Pint is an opinionated PHP code style fixer based on PHP-CS-Fixer. It helps maintain consistent code style and...',
+      thumbnail: '/placeholder.svg?height=200&width=300',
     },
     {
       date: 'November 9, 2024',
       title: "AI Won't Replace Developers - Here's Why We'll Thrive Instead",
-      description: 'First time I saw AI generating code, I panicked. Not gonna lie, felt like those rights in 2014 when I was struggling to...'
+      description: 'First time I saw AI generating code, I panicked. Not gonna lie, felt like those rights in 2014 when I was struggling to...',
+      thumbnail: '/placeholder.svg?height=200&width=300',
     },
   ]
 
@@ -25,7 +28,7 @@ export const LatestPosts = () => {
       <div className='max-w-[570px] w-full'>
         <div className='flex justify-between mb-6 items-center'>
           <h2 className='text-lg font-medium'>Latest Posts</h2>
-          <Link href="/posts" className='underline decoration-wavy'>See all posts</Link>
+          <Link href="/blog" className='underline decoration-wavy'>See all posts</Link>
         </div>
         {lastestPosts.map((post, index) => (
           <>
@@ -46,7 +49,7 @@ export const LatestPosts = () => {
             </div>
           </>
         ))}
-        <Link href="/posts" className='inline-block mt-2 text-sm underline'>
+        <Link href="/blog" className='inline-block mt-2 text-sm underline'>
           See more posts
         </Link>
       </div>

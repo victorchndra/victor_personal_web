@@ -25,7 +25,7 @@ export const RecentProjects = () => {
         </div>
         <div className="flex flex-wrap gap-4">
           {recentProjects.map((project, index) => (
-            <Link key={index} href="#" className='group flex-1 min-w-[calc(50%-8px)]'>
+            <Link key={index} href="#" className='group w-[calc(50%-8px)]'>
               <div className='space-y-2'>
                 <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'>
                   <Image
