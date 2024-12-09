@@ -1,6 +1,6 @@
 import React from 'react'
 
-const BlogDetail = ({ params }: { params: { slug: string } }) => {
+const Blogs = ({ params }: { params: { slug: string } }) => {
   return (
     <div>
       <h1>Project: {params.slug}</h1>
@@ -8,4 +8,4 @@ const BlogDetail = ({ params }: { params: { slug: string } }) => {
   )
 }
 
-export default BlogDetail
+export default Blogs

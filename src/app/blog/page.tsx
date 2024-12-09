@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
-export default function Blog() {
+export default function BlogCategory() {
   const categories = [
     {
       name: 'Tech',
@@ -66,7 +66,7 @@ export default function Blog() {
         </div>
         <div className="flex flex-wrap gap-4">
           {posts.map((post, index) => (
-            <Link key={index} href={`/blog/${post.category.slug}/${post.slug}`} className='group md:w-[calc(50%-8px)] md:mb-0 mb-4'>
+            <Link key={index} href={`/blog/${post.category.slug}/${post.slug}`} className='group md:w-[calc(50%-8px)] md:mb-0 mb-4 w-full'>
               <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'>
                 <Image
                   src={post.thumbnail}

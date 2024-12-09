@@ -20,8 +20,8 @@ export const RecentProjects = () => {
     <section className='flex justify-center'>
       <div className='w-full max-w-[570px]'>
         <div className='flex items-center justify-between mb-6'>
-          <h2 className='text-lg font-medium'>Recent projects</h2>
-          <Link href="/projects" className='underline decoration-wavy'>See all projects</Link>
+          <h2 className='text-lg font-medium'>Recent Projects</h2>
+          <Link href="/project" className='underline decoration-wavy'>See all projects</Link>
         </div>
         <div className="flex flex-wrap gap-4">
           {recentProjects.map((project, index) => (
