@@ -39,7 +39,7 @@ export const LatestPosts = () => {
                     <div className='absolute animate-ping rounded-full h-3 w-3 bg-gradient-to-r from-violet-600 to-purple-600 dark:bg-white/90'></div>
                   )}
                 </div>
-                <div className='ml-1 w-[3px] bg-slate-950/10 dark:bg-white/10 h-full -mt-6'></div>
+                <div className='ml-1 w-[3px] bg-slate-950/10 dark:bg-white/10 h-full -mt-6 -z-10'></div>
               </div>
               <article key={index} className='space-y-1 pl-3 mb-5'>
                 <time className='text-sm text-zinc-500'>{post.date}</time>
