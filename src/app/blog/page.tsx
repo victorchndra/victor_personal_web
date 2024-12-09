@@ -1,21 +1,8 @@
-import Link from 'next/link'
 import React from 'react'
+import BlogLayout from '../components/blog/blog-layout'
+import Posts from '../components/blog/posts'
 
 export default function BlogCategory() {
-  const categories = [
-    {
-      name: 'Tech',
-      slug: 'tech',
-    },
-    {
-      name: 'Journey',
-      slug: 'journey',
-    },
-    {
-      name: 'Lifestyle',
-      slug: 'lifestyle',
-    },
-  ]
 
   const posts = [
     {
@@ -56,28 +43,8 @@ export default function BlogCategory() {
   ]
 
   return (
-    <section className='flex justify-center'>
-      <div className='max-w-[570px] w-full flex flex-col'>
-        <div className='flex space-x-4 my-6'>
-          {categories.map((category, index) => (
-            <Link key={index} href={`/blog/${category.slug}`} className='px-3 py-1 border border-black'>{category.name}</Link>
-          ))}
-        </div>
-        <div className="flex flex-col">
-          {posts.map((post, index) => (
-            <Link key={index} href={`/blog/${post.category.slug}/${post.slug}`} className='group w-full'>
-              <div className='hover:bg-slate-50'>
-                <time className='text-xs text-zinc-500'>{post.date}</time>
-                <h3 className='font-medium group-hover:underline mb-2'>{post.title}</h3>
-                <p className='text-sm text-zinc-500'>{post.description}</p>
-              </div>
-              {index !== (posts.length - 1) && (
-                <hr className='my-4' />
-              )}
-            </Link>
-          ))}
-        </div>
-      </div>
-    </section>
+    <BlogLayout>
+      <Posts posts={posts} />
+    </BlogLayout>
   )
 }

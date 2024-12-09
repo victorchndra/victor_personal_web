@@ -1,9 +1,13 @@
 import React from 'react'
 
-const BlogDetail = () => {
+export default async function Blog({ params }: { params: Promise<{ blog: string }> }) {
+  const postSlug = (await params).blog
+
   return (
-    <div>BlogDetail</div>
+    <section className='flex justify-center'>
+      <div className='max-w-[570px] w-full'>
+        {postSlug}
+      </div>
+    </section>
   )
 }
-
-export default BlogDetail
