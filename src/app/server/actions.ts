@@ -2,16 +2,44 @@
 
 import axios from "axios";
 
-export async function getAllCategories() {
+export async function getAllProjectCategories() {
   try {
-    const data = axios.get(`${process.env.HOST_API}/projectCategory`, {
-      method: "GET"
+    const res = await fetch(`${process.env.HOST_API}/projectCategory`, {
+      method: "GET",
+      cache: "no-cache"
     })
-      .then(res => res.data)
-      .catch(err => console.log(err))
 
-    return data;
-  } catch (error) {
-    console.error(error)
+    return res.json()
+  } catch (err) {
+    return err
   }
+}
+
+export async function getAllBlogCategories() {
+  try {
+    const res = await fetch(`${process.env.HOST_API}/blogCategory`, {
+      method: "GET",
+      cache: "no-cache"
+    })
+
+    return res.json()
+  } catch (err) {
+    return err
+  }
+}
+
+export async function getAllBlogPosts() {
+  const data = axios.get(`${process.env.HOST_API}/blog`)
+    .then(res => res.data)
+    .catch(err => console.error(err))
+
+  return data
+}
+
+export async function getFilteredBlogPosts($params: string) {
+  const data = axios.get(`${process.env.HOST_API}/blog/${$params}`)
+    .then(res => res.data)
+    .catch(err => console.error(err))
+
+  return data
 }

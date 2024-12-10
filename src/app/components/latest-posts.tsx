@@ -1,44 +1,26 @@
+'use client'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+// import DOMPurify from 'dompurify'
+import { getAllBlogPosts } from '../server/actions'
+import { TContent } from '../server/types'
+import moment from 'moment'
 
 export const LatestPosts = () => {
-  const lastestPosts = [
-    {
-      date: 'December 4, 2024',
-      title: 'How to use Laravel Pint in VSCode?',
-      slug: 'how-to-use-laravel-pint-in-vscode',
-      description: 'Laravel Pint is an opinionated PHP code style fixer based on PHP-CS-Fixer. It helps maintain consistent code style and...',
-      thumbnail: '/placeholder.svg?height=200&width=300',
-      category:
-      {
-        name: 'Technology',
-        slug: 'technology',
-      },
-    },
-    {
-      date: 'November 18, 2024',
-      title: 'How to Extract Audio from MKV Files Using FFmpeg',
-      slug: "how-to-extract-audio-from-mkv-files-using-ffmpeg",
-      description: 'Laravel Pint is an opinionated PHP code style fixer based on PHP-CS-Fixer. It helps maintain consistent code style and...',
-      thumbnail: '/placeholder.svg?height=200&width=300',
-      category:
-      {
-        name: 'Technology',
-        slug: 'technology',
-      },
-    },
-    {
-      date: 'November 9, 2024',
-      title: "AI Won't Replace Developers - Here's Why We'll Thrive Instead",
-      slug: "ai-Won't-replace-developers---here's-why-we'll-thrive-instead",
-      description: 'First time I saw AI generating code, I panicked. Not gonna lie, felt like those rights in 2014 when I was struggling to...',
-      thumbnail: '/placeholder.svg?height=200&width=300',
-      category: {
-        name: 'Lifestyle',
-        slug: 'lifestyle',
-      },
-    },
-  ]
+  const [lastestPosts, setLastestPosts] = useState<TContent[] | null>()
+
+  const stripHtml = (html: string) => {
+    return html.replace(/<[^>]*>/g, '')
+  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await getAllBlogPosts()
+
+      setLastestPosts(data.slice(0, 3))
+    }
+    fetchData()
+  }, [])
 
   return (
     <section className='flex justify-center'>
@@ -47,7 +29,7 @@ export const LatestPosts = () => {
           <h2 className='text-lg font-medium'>Latest Posts</h2>
           <Link href="/blog" className='underline decoration-wavy'>See all posts</Link>
         </div>
-        {lastestPosts.map((post, index) => (
+        {lastestPosts && lastestPosts.map((post, index) => (
           <>
             <div className='flex'>
               <div className="relative">
@@ -59,9 +41,10 @@ export const LatestPosts = () => {
                 <div className='ml-1 w-[3px] bg-slate-950/10 dark:bg-white/10 h-full -mt-6 -z-10'></div>
               </div>
               <Link href={`/blog/${post.category.slug}/${post.slug}`} key={index} className='space-y-1 pl-3 mb-5'>
-                <time className='text-sm text-zinc-500'>{post.date}</time>
-                <h3 className='font-medium hover:underline'>{post.title}</h3>
-                <p className='text-sm text-zinc-500'>{post.description}</p>
+                <time className='text-sm text-zinc-500'>{moment(post.created_at).format('MMMM DD, YYYY')}</time>
+                <h3 className='font-medium hover:underline'>{post.name}</h3>
+                <p className='text-sm text-zinc-500'>{post.content.length ? `${stripHtml(post.content).substring(0, 120)}...` : post.content}</p>
+                {/* <div className='text-sm text-zinc-500 content' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content.length ? `${post.content.substring(0, 100)}...` : post.content) }} /> */}
               </Link>
             </div>
           </>
