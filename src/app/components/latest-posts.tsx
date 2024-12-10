@@ -6,20 +6,37 @@ export const LatestPosts = () => {
     {
       date: 'December 4, 2024',
       title: 'How to use Laravel Pint in VSCode?',
+      slug: 'how-to-use-laravel-pint-in-vscode',
       description: 'Laravel Pint is an opinionated PHP code style fixer based on PHP-CS-Fixer. It helps maintain consistent code style and...',
       thumbnail: '/placeholder.svg?height=200&width=300',
+      category:
+      {
+        name: 'Tech',
+        slug: 'tech',
+      },
     },
     {
       date: 'November 18, 2024',
       title: 'How to Extract Audio from MKV Files Using FFmpeg',
+      slug: "how-to-extract-audio-from-mkv-files-using-ffmpeg",
       description: 'Laravel Pint is an opinionated PHP code style fixer based on PHP-CS-Fixer. It helps maintain consistent code style and...',
       thumbnail: '/placeholder.svg?height=200&width=300',
+      category:
+      {
+        name: 'Tech',
+        slug: 'tech',
+      },
     },
     {
       date: 'November 9, 2024',
       title: "AI Won't Replace Developers - Here's Why We'll Thrive Instead",
+      slug: "ai-Won't-replace-developers---here's-why-we'll-thrive-instead",
       description: 'First time I saw AI generating code, I panicked. Not gonna lie, felt like those rights in 2014 when I was struggling to...',
       thumbnail: '/placeholder.svg?height=200&width=300',
+      category: {
+        name: 'Lifestyle',
+        slug: 'lifestyle',
+      },
     },
   ]
 
@@ -41,11 +58,11 @@ export const LatestPosts = () => {
                 </div>
                 <div className='ml-1 w-[3px] bg-slate-950/10 dark:bg-white/10 h-full -mt-6 -z-10'></div>
               </div>
-              <article key={index} className='space-y-1 pl-3 mb-5'>
+              <Link href={`/blog/${post.category.slug}/${post.slug}`} key={index} className='space-y-1 pl-3 mb-5'>
                 <time className='text-sm text-zinc-500'>{post.date}</time>
                 <h3 className='font-medium hover:underline'>{post.title}</h3>
                 <p className='text-sm text-zinc-500'>{post.description}</p>
-              </article>
+              </Link>
             </div>
           </>
         ))}
