@@ -7,8 +7,8 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
 
   const categories = [
     {
-      name: 'Tech',
-      slug: 'tech',
+      name: 'Technology',
+      slug: 'technology',
     },
     {
       name: 'Journey',

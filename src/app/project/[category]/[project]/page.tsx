@@ -39,6 +39,9 @@ export default async function ProjectDetail({ params }: { params: Promise<{ proj
       <div className='max-w-[570px] w-full flex-col'>
         <Link href="/project" className='underline'>← back to project</Link>
         <div className='flex flex-col mt-12 space-y-3 md:space-y-2'>
+          <span className='text-sm text-white px-2 py-0.5 font-bold bg-violet-600 w-fit uppercase'>{getProject?.category.name}</span>
+          <span className='text-sm text-zinc-500'>{getProject?.date}</span>
+          <h1 className='text-xl font-bold'>{getProject?.title}</h1>
           <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
             <Image
               src={getProject?.thumbnail ?? "/placeholder.svg"}
@@ -48,8 +51,6 @@ export default async function ProjectDetail({ params }: { params: Promise<{ proj
               className='object-cover w-full h-full relative'
             />
           </div>
-          <span className='text-sm text-zinc-500'>{getProject?.date}</span>
-          <h1 className='text-xl font-bold'>{getProject?.title}</h1>
           <p>{getProject?.description}</p>
         </div>
       </div>

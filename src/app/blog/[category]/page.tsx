@@ -14,8 +14,8 @@ export default async function BlogList({ params }: { params: Promise<{ category:
       thumbnail: '/placeholder.svg?height=200&width=300',
       category:
       {
-        name: 'Tech',
-        slug: 'tech',
+        name: 'Technology',
+        slug: 'technology',
       },
     },
     {
@@ -26,8 +26,8 @@ export default async function BlogList({ params }: { params: Promise<{ category:
       thumbnail: '/placeholder.svg?height=200&width=300',
       category:
       {
-        name: 'Tech',
-        slug: 'tech',
+        name: 'Technology',
+        slug: 'technology',
       },
     },
     {

@@ -14,8 +14,8 @@ export default async function Blog({ params }: { params: Promise<{ blog: string 
       thumbnail: '/placeholder.svg?height=200&width=300',
       category:
       {
-        name: 'Tech',
-        slug: 'tech',
+        name: 'Technology',
+        slug: 'technology',
       },
     },
     {
@@ -26,8 +26,8 @@ export default async function Blog({ params }: { params: Promise<{ blog: string 
       thumbnail: '/placeholder.svg?height=200&width=300',
       category:
       {
-        name: 'Tech',
-        slug: 'tech',
+        name: 'Technology',
+        slug: 'technology',
       },
     },
     {
@@ -50,6 +50,7 @@ export default async function Blog({ params }: { params: Promise<{ blog: string 
       <div className='max-w-[570px] w-full flex-col'>
         <Link href="/blog" className='underline'>← back to blog</Link>
         <div className='flex flex-col mt-12 space-y-3 md:space-y-2'>
+          <span className='text-sm text-white px-2 py-0.5 font-bold bg-violet-600 w-fit uppercase'>{getPost?.category.name}</span>
           <span className='text-sm text-zinc-500'>{getPost?.date}</span>
           <h1 className='text-xl font-bold'>{getPost?.title}</h1>
           {getPost?.thumbnail && (

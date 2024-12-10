@@ -13,8 +13,8 @@ export default function BlogCategory() {
       thumbnail: '/placeholder.svg?height=200&width=300',
       category:
       {
-        name: 'Tech',
-        slug: 'tech',
+        name: 'Technology',
+        slug: 'technology',
       },
     },
     {
@@ -26,7 +26,7 @@ export default function BlogCategory() {
       category:
       {
         name: 'Tech',
-        slug: 'tech',
+        slug: 'technology',
       },
     },
     {

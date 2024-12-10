@@ -11,8 +11,8 @@ export const LatestPosts = () => {
       thumbnail: '/placeholder.svg?height=200&width=300',
       category:
       {
-        name: 'Tech',
-        slug: 'tech',
+        name: 'Technology',
+        slug: 'technology',
       },
     },
     {
@@ -23,8 +23,8 @@ export const LatestPosts = () => {
       thumbnail: '/placeholder.svg?height=200&width=300',
       category:
       {
-        name: 'Tech',
-        slug: 'tech',
+        name: 'Technology',
+        slug: 'technology',
       },
     },
     {

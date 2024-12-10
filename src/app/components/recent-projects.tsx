@@ -5,14 +5,28 @@ import React from 'react'
 export const RecentProjects = () => {
   const recentProjects = [
     {
+      date: 'November 12, 2024',
       title: "Indie Action Club",
+      slug: 'indie-action-club',
       description: "A community for builders that get things done.",
-      image: "/placeholder.svg?height=200&width=300"
+      thumbnail: "/placeholder.svg?height=200&width=300",
+      category:
+      {
+        name: 'Personal',
+        slug: 'personal',
+      },
     },
     {
+      date: 'November 9, 2024',
       title: "iCodeThis",
+      slug: 'icodethis',
       description: "Improve your coding skills by building projects",
-      image: "/placeholder.svg?height=200&width=300"
+      thumbnail: "/placeholder.svg?height=200&width=300",
+      category:
+      {
+        name: 'Personal',
+        slug: 'personal',
+      },
     },
   ]
 
@@ -25,7 +39,7 @@ export const RecentProjects = () => {
         </div>
         <div className="flex flex-wrap gap-4">
           {recentProjects.map((project, index) => (
-            <Link key={index} href="#" className='group w-[calc(50%-8px)]'>
+            <Link key={index} href={`/project/${project.category.slug}/${project.slug}`} className='group w-[calc(50%-8px)]'>
               <div className='space-y-2'>
                 <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'>
                   <Image

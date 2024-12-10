@@ -16,7 +16,7 @@ export default function BlogPosts({ posts }:
   }) {
   return (
     <>
-      {posts.map((post, index) => (
+      {posts.length > 0 ? posts.map((post, index) => (
         <Link key={index} href={`/blog/${post.category.slug}/${post.slug}`} className='group w-full'>
           <div>
             <time className='text-xs text-zinc-500'>{post.date}</time>
@@ -27,7 +27,9 @@ export default function BlogPosts({ posts }:
             <hr className='my-4' />
           )}
         </Link>
-      ))}
+      )) : (
+        <span className='italic text-sm text-zinc-500 mx-auto'>- no articles -</span>
+      )}
     </>
   )
 }

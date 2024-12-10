@@ -16,7 +16,7 @@ export default function ProjectPosts({ projects }: {
 }) {
   return (
     <>
-      {projects.map((post, index) => (
+      {projects.length > 0 ? projects.map((post, index) => (
         <Link key={index} href={`/project/${post.category.slug}/${post.slug}`} className='group w-[calc(50%-8px)] md:mb-0 mb-4'>
           <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
             <Image
@@ -30,7 +30,9 @@ export default function ProjectPosts({ projects }: {
           <h3 className='font-medium group-hover:underline mb-2'>{post.title}</h3>
           <p className='text-sm text-zinc-500'>{post.description}</p>
         </Link>
-      ))}
+      )) : (
+        <span className='italic text-sm text-zinc-500 mx-auto'>- no project -</span>
+      )}
     </>
   )
 }
