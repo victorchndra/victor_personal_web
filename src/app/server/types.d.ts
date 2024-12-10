@@ -6,8 +6,9 @@ export type TCategory = {
 export type TContent = {
   name: string,
   slug: string,
-  thumbnail: string,
   content: string,
+  thumbnail?: string,
+  description?: string,
   category: {
     name: string,
     slug: string,

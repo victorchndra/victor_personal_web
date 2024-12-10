@@ -1,34 +1,22 @@
-import Image from 'next/image'
+'use client'
+// import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { TContent } from '../server/types'
+import { getAllProjectPosts } from '../server/actions'
 
 export const RecentProjects = () => {
-  const recentProjects = [
-    {
-      date: 'November 12, 2024',
-      title: "Indie Action Club",
-      slug: 'indie-action-club',
-      description: "A community for builders that get things done.",
-      thumbnail: "/placeholder.svg?height=200&width=300",
-      category:
-      {
-        name: 'Personal',
-        slug: 'personal',
-      },
-    },
-    {
-      date: 'November 9, 2024',
-      title: "iCodeThis",
-      slug: 'icodethis',
-      description: "Improve your coding skills by building projects",
-      thumbnail: "/placeholder.svg?height=200&width=300",
-      category:
-      {
-        name: 'Personal',
-        slug: 'personal',
-      },
-    },
-  ]
+  const [recentProjects, setRecentProjects] = useState<TContent[] | null>()
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await getAllProjectPosts()
+
+      setRecentProjects(data.slice(0, 2))
+    }
+
+    fetchData()
+  }, [])
 
   return (
     <section className='flex justify-center'>
@@ -38,23 +26,33 @@ export const RecentProjects = () => {
           <Link href="/project" className='underline decoration-wavy'>See all projects</Link>
         </div>
         <div className="flex flex-wrap gap-4">
-          {recentProjects.map((project, index) => (
-            <Link key={index} href={`/project/${project.category.slug}/${project.slug}`} className='group w-[calc(50%-8px)]'>
+          {recentProjects ? recentProjects.map((project, index) => (
+            <Link key={index} href={`/project/${project.category.slug}/${project.slug}`} className='group w-[calc(50%-8px)] elementToFadeInAndOut'>
               <div className='space-y-2'>
                 <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'>
-                  <Image
+                  {/* <Image
                     src="/placeholder.svg?height=200&width=300"
                     alt={project.title}
                     width={300}
                     height={200}
                     className='object-cover w-full h-full'
-                  />
+                  /> */}
                 </div>
-                <h3 className='font-medium group-hover:underline'>{project.title}</h3>
+                <h3 className='font-medium group-hover:underline'>{project.name}</h3>
                 <p className='text-sm text-zinc-500'>{project.description}</p>
               </div>
             </Link>
-          ))}
+          )) : (
+            Array.from({ length: 2 }).map((_, index) => (
+              <div key={index} className='group w-[calc(50%-8px)]'>
+                <div className='space-y-2'>
+                  <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'></div>
+                  <div className='bg-gray-200 h-6 w-2/3 rounded-md'></div>
+                  <div className='bg-gray-200 h-6 w-full rounded-md'></div>
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </section>

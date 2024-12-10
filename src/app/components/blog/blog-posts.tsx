@@ -17,7 +17,7 @@ export default function BlogPosts({ posts }:
   return (
     <>
       {posts.length > 0 ? posts.map((post, index) => (
-        <Link key={index} href={`/blog/${post.category.slug}/${post.slug}`} className='group w-full'>
+        <Link key={index} href={`/blog/${post.category.slug}/${post.slug}`} className='group w-full elementToFadeInAndOut'>
           <div>
             <time className='text-xs text-zinc-500'>{post.date}</time>
             <h3 className='font-medium group-hover:underline mb-2'>{post.title}</h3>

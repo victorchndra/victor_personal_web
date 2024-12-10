@@ -36,6 +36,14 @@ export async function getAllBlogPosts() {
   return data
 }
 
+export async function getAllProjectPosts() {
+  const data = axios.get(`${process.env.HOST_API}/project`)
+    .then(res => res.data)
+    .catch(err => console.error(err))
+
+  return data
+}
+
 export async function getFilteredBlogPosts($params: string) {
   const data = axios.get(`${process.env.HOST_API}/blog/${$params}`)
     .then(res => res.data)
