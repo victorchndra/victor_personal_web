@@ -26,10 +26,10 @@ export default async function Blog({ params }: { params: Promise<{ category: str
     <>
       {/* SEO Metadata */}
       {/* <Head>
-        <title>{post.name} - {post.category.name} | My Blog</title>
+        <title>{post.name} - {post.category.name} | Victor Chandra</title>
         <meta name="description" content={post.excerpt || "Read this amazing blog post"} />
         <meta name="keywords" content={`blog, ${post.category.name}, ${post.name}`} />
-        <link rel="canonical" href={`https://mywebsite.com/blog/${category}/${blog}`} />
+        <link rel="canonical" href={`https://victor-chandra.com/blog/${category}/${blog}`} />
       </Head> */}
 
       <section className='flex justify-center'>
