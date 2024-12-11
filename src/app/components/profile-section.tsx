@@ -12,7 +12,7 @@ export const ProfileSection = () => {
           alt='avatar'
           width={64}
           height={64}
-          className='border-2 border-violet-600 rounded-full flex-shrink-0'
+          className='border-2 h-16 w-16 border-violet-600 rounded-full flex-shrink-0'
         />
         <div className="space-y-2 text-sm">
           <p>
