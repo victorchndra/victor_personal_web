@@ -2,8 +2,8 @@
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 // import DOMPurify from 'dompurify'
-import { getAllBlogPosts } from '../server/actions'
-import { TContent } from '../server/types'
+import { getAllBlogPosts } from '../blog/actions'
+import { TContent } from '../blog/types'
 import moment from 'moment'
 
 export const LatestPosts = () => {
@@ -42,7 +42,7 @@ export const LatestPosts = () => {
             <Link href={`/blog/${post.category.slug}/${post.slug}`} className='space-y-1 pl-3 mb-5'>
               <time className='text-sm text-zinc-500'>{moment(post.created_at).format('MMMM DD, YYYY')}</time>
               <h3 className='font-medium hover:underline'>{post.name}</h3>
-              <p className='text-sm text-zinc-500'>{post.content.length ? `${stripHtml(post.content).substring(0, 120)}...` : post.content}</p>
+              <p className='text-sm text-zinc-500'>{post.content.length ? `${stripHtml(post.content).substring(0, 120)}...` : `${stripHtml(post.content)}`}</p>
               {/* <div className='text-sm text-zinc-500 content' dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(post.content.length ? `${post.content.substring(0, 100)}...` : post.content) }} /> */}
             </Link>
           </div>
@@ -52,7 +52,7 @@ export const LatestPosts = () => {
               <div className='relative'>
                 <div className='ml-1 w-[3px] bg-gray-200 dark:bg-white/10 h-full -z-10'></div>
               </div>
-              <div className="rounded-md p-4 w-full mx-auto ">
+              <div className="rounded-md py-4 pl-4 w-full mx-auto ">
                 <div className="animate-pulse flex flex-col space-y-2">
                   <div className='bg-gray-200 h-4 w-1/4 rounded-md'></div>
                   <div className='bg-gray-200 h-6 w-2/3 rounded-md'></div>

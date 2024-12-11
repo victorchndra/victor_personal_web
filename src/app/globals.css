@@ -43,13 +43,13 @@
   }
 
   .elementToFadeInAndOut {
-    animation: fadeInOut .6s linear 1 forwards;
+    animation: fadeInOut 1s ease-in-out 1 forwards;
   }
 
   @keyframes fadeInOut {
     0% {
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(25px);
     }
 
     100% {

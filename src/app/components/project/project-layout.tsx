@@ -1,5 +1,5 @@
-import { getAllProjectCategories } from '@/app/server/actions'
-import { TCategory } from '@/app/server/types'
+import { getAllProjectCategories } from '@/app/blog/actions'
+import { TCategory } from '@/app/blog/types'
 import Link from 'next/link'
 import React from 'react'
 
