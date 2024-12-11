@@ -25,13 +25,13 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
           <h1 className='text-xl font-bold'>{post.name}</h1>
           {post ? post.thumbnail && (
             <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
-              {/* <Image
-                  src={post.thumbnail ?? "/placeholder.svg"}
-                  alt={post.name ?? "undefined image"}
-                  width={300}
-                  height={200}
-                  className='object-cover w-full h-full relative'
-                /> */}
+              <Image
+                src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post.thumbnail}`}
+                alt={post.name ?? "undefined image"}
+                width={300}
+                height={200}
+                className='object-cover w-full h-full relative'
+              />
             </div>
           ) : (
             <div className='group w-full'>
