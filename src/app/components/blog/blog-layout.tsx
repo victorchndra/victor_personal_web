@@ -6,17 +6,6 @@ import React from 'react'
 
 export default async function BlogLayout({ children }: { children: React.ReactNode }) {
 
-  // const [blogCategories, setBlogCategories] = useState<TCategory[] | null>()
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const { data } = await getAllBlogCategories()
-
-  //     setBlogCategories(data)
-  //   }
-  //   fetchData()
-  // }, [])
-
   const { data }: { data: TCategory[] } = await getAllBlogCategories()
 
   return (

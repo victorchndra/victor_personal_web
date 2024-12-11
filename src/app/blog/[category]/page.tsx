@@ -9,19 +9,6 @@ export default async function BlogList({ params }: { params: { category: string 
 
   const { data: lastestPosts } = await getFilteredBlogPosts(params.category)
 
-  // const [lastestPosts, setLastestPosts] = useState<TContent[] | null>()
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const resolvedParams = await asyncParams
-
-  //     const { data } = await getFilteredBlogPosts(resolvedParams.category)
-
-  //     setLastestPosts(data)
-  //   }
-  //   fetchData()
-  // }, [asyncParams])
-
   return (
     <BlogLayout>
       <Posts posts={lastestPosts} />
