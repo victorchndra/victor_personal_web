@@ -43,7 +43,7 @@ export default async function Blog({ params }: { params: Promise<{ category: str
             )}
             <span className='text-sm text-zinc-500'>{post && moment(post.created_at).format('MMMM DD, YYYY')}</span>
             <h1 className='text-xl font-bold'>{post && post.name}</h1>
-            {post ? post.thumbnail && (
+            {post && post.thumbnail && (
               <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
                 <Image
                   src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post.thumbnail}`}
@@ -52,14 +52,6 @@ export default async function Blog({ params }: { params: Promise<{ category: str
                   height={200}
                   className='object-cover w-full h-full relative'
                 />
-              </div>
-            ) : (
-              <div className='group w-full'>
-                <div className='space-y-2 animate-pulse'>
-                  <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'></div>
-                  <div className='bg-gray-200 h-4 w-2/3 rounded-md'></div>
-                  <div className='bg-gray-200 h-4 w-full rounded-md'></div>
-                </div>
               </div>
             )}
             <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} className='prose' />

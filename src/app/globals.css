@@ -21,8 +21,19 @@
     }
   }
 
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scrollbar-none {
+    /* Internet Explorer 10+ */
+    -ms-overflow-style: none;
+    /* Firefox */
+    scrollbar-width: none;
+  }
+
   .elementToFadeInAndOut {
-    animation: fadeInOut 1s ease-in-out 1 forwards;
+    animation: fadeInOut 0.5s ease-in-out 1 forwards;
   }
 
   @keyframes fadeInOut {
