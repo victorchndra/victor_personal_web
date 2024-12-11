@@ -1,72 +1,71 @@
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { getAllBlogPosts, getBlogPost } from '../../actions'
+import DOMPurify from 'isomorphic-dompurify'
+import moment from 'moment'
+// import Head from 'next/head'
 
-export default async function Blog({ params }: { params: Promise<{ blog: string }> }) {
-  const postSlug = (await params).blog
+// Server Static Generation (SSG)
+export async function generateStaticParams() {
+  const { data: posts } = await getAllBlogPosts()
 
-  const posts = [
-    {
-      date: 'December 4, 2024',
-      title: 'How to use Laravel Pint in VSCode?',
-      slug: 'how-to-use-laravel-pint-in-vscode',
-      description: 'Laravel Pint is an opinionated PHP code style fixer based on PHP-CS-Fixer. It helps maintain consistent code style and...',
-      thumbnail: '/placeholder.svg?height=200&width=300',
-      category:
-      {
-        name: 'Technology',
-        slug: 'technology',
-      },
-    },
-    {
-      date: 'November 18, 2024',
-      title: 'How to Extract Audio from MKV Files Using FFmpeg',
-      slug: "how-to-extract-audio-from-mkv-files-using-ffmpeg",
-      description: 'Laravel Pint is an opinionated PHP code style fixer based on PHP-CS-Fixer. It helps maintain consistent code style and...',
-      thumbnail: '/placeholder.svg?height=200&width=300',
-      category:
-      {
-        name: 'Technology',
-        slug: 'technology',
-      },
-    },
-    {
-      date: 'November 9, 2024',
-      title: "AI Won't Replace Developers - Here's Why We'll Thrive Instead",
-      slug: "ai-Won't-replace-developers---here's-why-we'll-thrive-instead",
-      description: 'First time I saw AI generating code, I panicked. Not gonna lie, felt like those rights in 2014 when I was struggling to...',
-      thumbnail: '/placeholder.svg?height=200&width=300',
-      category: {
-        name: 'Lifestyle',
-        slug: 'lifestyle',
-      },
-    },
-  ]
+  return posts.map((post: { category: { slug: string }, blog: string }) => ({
+    category: post.category.slug,
+    blog: post.blog
+  }))
+}
 
-  const getPost = posts.find(post => post.slug === postSlug)
+export default async function Blog({ params }: { params: Promise<{ category: string, blog: string }> }) {
+  const { category, blog } = await params
+  const { data: post } = await getBlogPost(category, blog)
+
+  const sanitizedContent = DOMPurify.sanitize(post.content)
 
   return (
-    <section className='flex justify-center'>
-      <div className='max-w-[570px] w-full flex-col'>
-        <Link href="/blog" className='underline'>← back to blog</Link>
-        <div className='flex flex-col mt-12 space-y-3 md:space-y-2'>
-          <span className='text-sm text-white px-2 py-0.5 font-bold bg-violet-600 w-fit uppercase'>{getPost?.category.name}</span>
-          <span className='text-sm text-zinc-500'>{getPost?.date}</span>
-          <h1 className='text-xl font-bold'>{getPost?.title}</h1>
-          {getPost?.thumbnail && (
-            <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
-              <Image
-                src={getPost?.thumbnail ?? "/placeholder.svg"}
-                alt={getPost?.title ?? "undefined image"}
+    <>
+      {/* SEO Metadata */}
+      {/* <Head>
+        <title>{post.name} - {post.category.name} | My Blog</title>
+        <meta name="description" content={post.excerpt || "Read this amazing blog post"} />
+        <meta name="keywords" content={`blog, ${post.category.name}, ${post.name}`} />
+        <link rel="canonical" href={`https://mywebsite.com/blog/${category}/${blog}`} />
+      </Head> */}
+
+      <section className='flex justify-center'>
+        <div className='max-w-[570px] w-full flex-col'>
+          <Link href="/blog" className='underline'>← back to blog</Link>
+          <div className='flex flex-col mt-12 space-y-3 md:space-y-2 elementToFadeInAndOut'>
+            {post && (
+              <span className='text-sm text-white px-2 py-0.5 font-bold bg-violet-600 w-fit uppercase'>
+                {post.category.name}
+              </span>
+            )}
+            <span className='text-sm text-zinc-500'>{post && moment(post.created_at).format('MMMM DD, YYYY')}</span>
+            <h1 className='text-xl font-bold'>{post && post.name}</h1>
+            {post ? post.thumbnail && (
+              <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
+                {/* <Image
+                src={post?.thumbnail ?? "/placeholder.svg"}
+                alt={post?.title ?? "undefined image"}
                 width={300}
                 height={200}
                 className='object-cover w-full h-full relative'
-              />
-            </div>
-          )}
-          <p>{getPost?.description}</p>
+              /> */}
+              </div>
+            ) : (
+              <div className='group w-full'>
+                <div className='space-y-2 animate-pulse'>
+                  <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'></div>
+                  <div className='bg-gray-200 h-4 w-2/3 rounded-md'></div>
+                  <div className='bg-gray-200 h-4 w-full rounded-md'></div>
+                </div>
+              </div>
+            )}
+            <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} className='content' />
+          </div>
         </div>
-      </div>
-    </section>
+      </section >
+    </>
   )
 }
