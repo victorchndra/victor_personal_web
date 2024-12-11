@@ -3,7 +3,7 @@ import { TCategory } from '@/app/blog/types'
 import Link from 'next/link'
 import React from 'react'
 
-export default async function BlogLayout({ children }: { children: React.ReactNode }) {
+export default async function BlogLayout({ children, currentPath }: { children: React.ReactNode, currentPath: string }) {
   const { data }: { data: TCategory[] } = await getAllBlogCategories()
 
   return (
@@ -13,9 +13,9 @@ export default async function BlogLayout({ children }: { children: React.ReactNo
           <div className='whitespace-nowrap'>
             {data && data.map((category, index) => (
               <div key={index} className='inline-block'>
-                <Link href={`/blog/${category.slug}`} className='underline'>{category.name}</Link>
+                <Link href={`/blog/${category.slug}`} className={`underline ${currentPath === `/blog/${category.slug}` && `text-indigo-600`}`}>{category.name}</Link>
                 {index !== (data.length - 1) && (
-                  <span className='px-4 text-zinc-500'>|</span>
+                  <span className='px-2 text-zinc-500'>|</span>
                 )}
               </div>
             ))}

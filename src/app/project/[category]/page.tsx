@@ -7,8 +7,10 @@ export default async function ProjectList({ params: asyncParams }: { params: { c
   const resolvedParams = await asyncParams
   const { data: filteredProjects } = await getFilteredProjectPosts(resolvedParams.category)
 
+  const currentPath = `/project/${resolvedParams.category}`
+
   return (
-    <ProjectLayout>
+    <ProjectLayout currentPath={currentPath}>
       <ProjectPosts projects={filteredProjects} />
     </ProjectLayout>
   )

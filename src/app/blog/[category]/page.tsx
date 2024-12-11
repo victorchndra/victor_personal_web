@@ -9,8 +9,10 @@ export default async function BlogList({ params: asyncParams }: { params: { cate
   const resolvedParams = await asyncParams
   const { data: filteredBlogPosts } = await getFilteredBlogPosts(resolvedParams.category)
 
+  const currentPath = `/blog/${resolvedParams.category || ''}`
+
   return (
-    <BlogLayout>
+    <BlogLayout currentPath={currentPath}>
       <BlogPosts posts={filteredBlogPosts} />
     </BlogLayout>
   )
