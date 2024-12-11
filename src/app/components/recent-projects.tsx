@@ -1,60 +1,10 @@
-'use client'
-// import Image from 'next/image'
-import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
-import { TContent } from '../blog/types'
+import React from 'react'
 import { getAllProjectPosts } from '../project/actions'
+import ProjectsHydrationWrapper from './projects-hydration-wrapper'
 
-export const RecentProjects = () => {
-  const [recentProjects, setRecentProjects] = useState<TContent[] | null>()
+export const RecentProjects = async () => {
+  const { data } = await getAllProjectPosts()
+  const ssrProjects = data.slice(0, 2)
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await getAllProjectPosts()
-
-      setRecentProjects(data.slice(0, 2))
-    }
-
-    fetchData()
-  }, [])
-
-  return (
-    <section className='flex justify-center'>
-      <div className='w-full max-w-[570px]'>
-        <div className='flex items-center justify-between mb-6'>
-          <h2 className='text-lg font-medium'>Recent Projects</h2>
-          <Link href="/project" className='underline decoration-wavy'>See all projects</Link>
-        </div>
-        <div className="flex flex-wrap gap-4">
-          {recentProjects ? recentProjects.map((project, index) => (
-            <Link key={index} href={`/project/${project.category.slug}/${project.slug}`} className='group w-[calc(50%-8px)] elementToFadeInAndOut'>
-              <div className='space-y-2'>
-                <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'>
-                  {/* <Image
-                    src="/placeholder.svg?height=200&width=300"
-                    alt={project.title}
-                    width={300}
-                    height={200}
-                    className='object-cover w-full h-full'
-                  /> */}
-                </div>
-                <h3 className='font-medium group-hover:underline'>{project.name}</h3>
-                <p className='text-sm text-zinc-500'>{project.description}</p>
-              </div>
-            </Link>
-          )) : (
-            Array.from({ length: 2 }).map((_, index) => (
-              <div key={index} className='group w-[calc(50%-8px)]'>
-                <div className='space-y-2 animate-pulse'>
-                  <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'></div>
-                  <div className='bg-gray-200 h-6 w-2/3 rounded-md'></div>
-                  <div className='bg-gray-200 h-6 w-full rounded-md'></div>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-    </section>
-  )
+  return <ProjectsHydrationWrapper ssrProjects={ssrProjects} />
 }
