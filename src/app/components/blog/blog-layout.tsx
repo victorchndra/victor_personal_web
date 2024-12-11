@@ -1,30 +1,32 @@
-'use client'
+// 'use client'
 import { getAllBlogCategories } from '@/app/blog/actions'
 import { TCategory } from '@/app/blog/types'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-export default function BlogLayout({ children }: { children: React.ReactNode }) {
+export default async function BlogLayout({ children }: { children: React.ReactNode }) {
 
-  const [blogCategories, setBlogCategories] = useState<TCategory[] | null>()
+  // const [blogCategories, setBlogCategories] = useState<TCategory[] | null>()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data } = await getAllBlogCategories()
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const { data } = await getAllBlogCategories()
 
-      setBlogCategories(data)
-    }
-    fetchData()
-  }, [])
+  //     setBlogCategories(data)
+  //   }
+  //   fetchData()
+  // }, [])
+
+  const { data }: { data: TCategory[] } = await getAllBlogCategories()
 
   return (
     <section className='flex justify-center'>
       <div className='max-w-[570px] w-full flex flex-col'>
         <div className='flex mb-8'>
-          {blogCategories ? blogCategories.map((category, index) => (
+          {data ? data.map((category, index) => (
             <div key={index}>
               <Link href={`/blog/${category.slug}`} className='underline'>{category.name}</Link>
-              {index !== (blogCategories.length - 1) && (
+              {index !== (data.length - 1) && (
                 <span className='px-4'>|</span>
               )}
             </div>
