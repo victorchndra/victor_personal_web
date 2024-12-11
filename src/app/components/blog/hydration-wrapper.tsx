@@ -9,7 +9,11 @@ export default function HydrationWrapper({ ssrData }: { ssrData: TContent[] }) {
   const [hydrated, setHydrated] = useState(false)
 
   useEffect(() => {
-    setHydrated(true)
+    const timer = setTimeout(() => {
+      setHydrated(true)
+    }, 500)
+
+    return () => clearTimeout(timer)
   }, [])
 
   return hydrated ? <BlogPosts posts={ssrData} /> : <LoadingPlaceholder />

@@ -7,7 +7,11 @@ export default function ProjectsHydrationWrapper({ ssrProjects }: { ssrProjects:
   const [hydratedProjects, setHydratedProjects] = useState<TContent[] | null>()
 
   useEffect(() => {
-    setHydratedProjects(ssrProjects)
+    const timer = setTimeout(() => {
+      setHydratedProjects(ssrProjects)
+    }, 700)
+
+    return () => clearTimeout(timer)
   }, [ssrProjects])
 
   return (

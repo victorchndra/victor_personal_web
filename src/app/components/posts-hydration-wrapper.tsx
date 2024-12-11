@@ -14,7 +14,11 @@ export default function PostsHydrationWrapper({ ssrPosts }: { ssrPosts: TContent
   }
 
   useEffect(() => {
-    setHydratedPosts(ssrPosts)
+    const timer = setTimeout(() => {
+      setHydratedPosts(ssrPosts)
+    }, 700)
+
+    return () => clearTimeout(timer)
   }, [ssrPosts])
 
   return (

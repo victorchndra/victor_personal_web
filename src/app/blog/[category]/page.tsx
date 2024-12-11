@@ -1,17 +1,17 @@
 // 'use client'
 import React from 'react'
 import BlogLayout from '@/app/components/blog/blog-layout'
-import Posts from '@/app/components/blog/blog-posts'
 // import { TContent } from '../types'
 import { getFilteredBlogPosts } from '../actions'
+import BlogPosts from '@/app/components/blog/blog-posts'
 
-export default async function BlogList({ params }: { params: { category: string } }) {
-
-  const { data: lastestPosts } = await getFilteredBlogPosts(params.category)
+export default async function BlogList({ params: asyncParams }: { params: { category: string } }) {
+  const resolvedParams = await asyncParams
+  const { data: lastestPosts } = await getFilteredBlogPosts(resolvedParams.category)
 
   return (
     <BlogLayout>
-      <Posts posts={lastestPosts} />
+      <BlogPosts posts={lastestPosts} />
     </BlogLayout>
   )
 }
