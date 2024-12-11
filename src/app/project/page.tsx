@@ -1,37 +1,16 @@
 import React from 'react'
 import ProjectLayout from '../components/project/project-layout'
-import ProjectPosts from '../components/project/project-posts'
+// import ProjectPosts from '../components/project/project-posts'
+import HydrationWrapper from '../components/project/hydration-wrapper'
+import { getAllProjectPosts } from './actions'
 
-const ProjectCategory = () => {
-
-  const projects = [
-    {
-      title: "Indie Action Club",
-      slug: 'indie-action-club',
-      description: "A community for builders that get things done.",
-      thumbnail: "/placeholder.svg?height=200&width=300",
-      category:
-      {
-        name: 'Personal',
-        slug: 'personal',
-      },
-    },
-    {
-      title: "iCodeThis",
-      slug: 'icodethis',
-      description: "Improve your coding skills by building projects",
-      thumbnail: "/placeholder.svg?height=200&width=300",
-      category:
-      {
-        name: 'Personal',
-        slug: 'personal',
-      },
-    },
-  ]
+const ProjectCategory = async () => {
+  const { data: recentProjects } = await getAllProjectPosts()
 
   return (
     <ProjectLayout>
-      <ProjectPosts projects={projects} />
+      {/* <ProjectPosts projects={projects} /> */}
+      <HydrationWrapper ssrData={recentProjects} />
     </ProjectLayout>
   )
 }
