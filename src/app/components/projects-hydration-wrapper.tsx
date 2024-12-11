@@ -43,8 +43,8 @@ export default function ProjectsHydrationWrapper({ ssrProjects }: { ssrProjects:
               <div key={index} className='group w-[calc(50%-8px)]'>
                 <div className='space-y-2 animate-pulse'>
                   <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'></div>
-                  <div className='bg-gray-200 h-6 w-2/3 rounded-md'></div>
-                  <div className='bg-gray-200 h-6 w-full rounded-md'></div>
+                  <div className='bg-gray-200 h-4 w-2/3 rounded-md'></div>
+                  <div className='bg-gray-200 h-4 w-full rounded-md'></div>
                 </div>
               </div>
             ))

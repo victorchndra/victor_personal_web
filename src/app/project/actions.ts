@@ -22,3 +22,16 @@ export async function getAllProjectPosts() {
 
   return data
 }
+
+export async function getFilteredProjectPosts($params: string) {
+  try {
+    const res = await fetch(`${process.env.HOST_API}/project/${$params}`, {
+      method: "GET",
+      cache: "no-cache"
+    })
+
+    return res.json()
+  } catch (err) {
+    return err
+  }
+}

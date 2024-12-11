@@ -7,7 +7,7 @@ export default function ProjectPosts({ projects }: { projects: TContent[] | null
   return (
     <>
       {projects && projects.length > 0 ? projects.map((post, index) => (
-        <Link key={index} href={`/project/${post.category.slug}/${post.slug}`} className='group w-[calc(50%-8px)] md:mb-0 mb-4 elementToFadeInAndOut'>
+        <Link key={index} href={`/project/${post.category.slug}/${post.slug}`} className='group w-[calc(50%-8px)] mb-4 elementToFadeInAndOut'>
           <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
             {/* <Image
               src={post.thumbnail}
