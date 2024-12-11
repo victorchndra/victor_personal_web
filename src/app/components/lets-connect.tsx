@@ -11,10 +11,10 @@ export const LetsConnect = () => {
         </p>
         <div className='flex gap-4'>
           <Link href="#" className='text-zinc-500 hover:text-foreground text-sm'>
-            Github
+            Instagram
           </Link>
           <Link href="#" className='text-zinc-500 hover:text-foreground text-sm'>
-            LinkedIn
+            Github
           </Link>
           <Link href="#" className='text-zinc-500 hover:text-foreground text-sm'>
             Twitter

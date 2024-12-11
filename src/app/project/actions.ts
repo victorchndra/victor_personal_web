@@ -38,3 +38,16 @@ export async function getFilteredProjectPosts($params: string) {
     return err
   }
 }
+
+export async function getProjectPost($category: string, $project: string) {
+  try {
+    const res = await fetch(`${process.env.HOST_API}/project/${$category}/${$project}`, {
+      method: "GET",
+      cache: "no-cache"
+    })
+
+    return res.json()
+  } catch (err) {
+    return err
+  }
+}

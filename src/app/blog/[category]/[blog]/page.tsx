@@ -1,10 +1,10 @@
 // import Image from 'next/image'
+// import Head from 'next/head'
 import Link from 'next/link'
 import React from 'react'
 import { getAllBlogPosts, getBlogPost } from '../../actions'
 import DOMPurify from 'isomorphic-dompurify'
 import moment from 'moment'
-// import Head from 'next/head'
 
 // Server Static Generation (SSG)
 export async function generateStaticParams() {
@@ -46,12 +46,12 @@ export default async function Blog({ params }: { params: Promise<{ category: str
             {post ? post.thumbnail && (
               <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
                 {/* <Image
-                src={post?.thumbnail ?? "/placeholder.svg"}
-                alt={post?.title ?? "undefined image"}
-                width={300}
-                height={200}
-                className='object-cover w-full h-full relative'
-              /> */}
+                  src={post.thumbnail ?? "/placeholder.svg"}
+                  alt={post.name ?? "undefined image"}
+                  width={300}
+                  height={200}
+                  className='object-cover w-full h-full relative'
+                /> */}
               </div>
             ) : (
               <div className='group w-full'>
@@ -62,7 +62,7 @@ export default async function Blog({ params }: { params: Promise<{ category: str
                 </div>
               </div>
             )}
-            <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} className='content' />
+            <div dangerouslySetInnerHTML={{ __html: sanitizedContent }} className='prose' />
           </div>
         </div>
       </section >
