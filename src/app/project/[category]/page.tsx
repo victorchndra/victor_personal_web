@@ -6,6 +6,8 @@ import { getAllProjectPosts, getFilteredProjectPosts } from '../actions'
 export async function generateStaticParams() {
   const { data: projects } = await getAllProjectPosts();
 
+  if (!Array.isArray(projects) || projects.length === 0) return [];
+
   return projects.map((category: { slug: string }) => ({ category: category.slug }))
 }
 

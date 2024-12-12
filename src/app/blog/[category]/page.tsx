@@ -6,6 +6,8 @@ import BlogPosts from '@/app/components/blog/blog-posts'
 export async function generateStaticParams() {
   const { data: posts } = await getAllBlogPosts();
 
+  if (!Array.isArray(posts) || posts.length === 0) return [];
+
   return posts.map((category: { slug: string }) => ({ category: category.slug }))
 }
 
