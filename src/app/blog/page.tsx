@@ -3,28 +3,16 @@ import BlogLayout from '../components/blog/blog-layout'
 // import BlogPosts from '../components/blog/blog-posts'
 import { getAllBlogPosts } from './actions'
 import HydrationWrapper from '../components/blog/hydration-wrapper'
-import { TContent } from './types';
 
-export async function getStaticProps() {
+export default async function BlogCategory() {
+  let lastestPosts = []
   try {
-    const { data: latestPosts } = await getAllBlogPosts();
-
-    return {
-      props: {
-        latestPosts: latestPosts || [], // Fallback to an empty array if undefined
-      },
-    };
+    const { data } = await getAllBlogPosts()
+    lastestPosts = data || []
   } catch (error) {
-    console.error("Error fetching blog posts:", error);
-    return {
-      props: {
-        latestPosts: [],
-      },
-    };
+    console.error("Failed to fetch blog posts:", error)
+    lastestPosts = []
   }
-}
-
-export default async function BlogCategory({ lastestPosts }: { lastestPosts: TContent[] }) {
 
   return (
     <BlogLayout>
