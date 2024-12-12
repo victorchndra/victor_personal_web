@@ -10,9 +10,9 @@ import moment from 'moment'
 export async function generateStaticParams() {
   const { data: posts } = await getAllBlogPosts()
 
-  return posts.map((post: { category: { slug: string }, blog: string }) => ({
+  return posts.map((post: { category: { slug: string }, slug: string }) => ({
     category: post.category.slug,
-    blog: post.blog
+    blog: post.slug
   }))
 }
 

@@ -2,8 +2,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import DOMPurify from 'isomorphic-dompurify'
-import { getProjectPost } from '../../actions'
+import { getAllProjectPosts, getProjectPost } from '../../actions'
 import moment from 'moment'
+
+// Server Static Generation (SSG)
+export async function generateStaticParams() {
+  const { data: projects } = await getAllProjectPosts()
+
+  return projects.map((project: { category: { slug: string }, slug: string }) => ({
+    category: project.category.slug,
+    project: project.slug
+  }))
+}
 
 export default async function ProjectDetail({ params }: { params: Promise<{ category: string, project: string }> }) {
   const { category, project } = await params
