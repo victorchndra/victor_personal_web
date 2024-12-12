@@ -7,10 +7,12 @@ import { getAllProjectPosts } from './actions'
 const ProjectCategory = async () => {
   const { data: recentProjects } = await getAllProjectPosts()
 
+  const projects = recentProjects || []
+
   return (
     <ProjectLayout>
       {/* <ProjectPosts projects={projects} /> */}
-      <HydrationWrapper ssrData={recentProjects} />
+      <HydrationWrapper ssrData={projects} />
     </ProjectLayout>
   )
 }
