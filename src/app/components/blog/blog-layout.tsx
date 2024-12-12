@@ -3,7 +3,7 @@ import { TCategory } from '@/app/blog/types'
 import Link from 'next/link'
 import React from 'react'
 
-export default async function BlogLayout({ children, currentPath }: { children: React.ReactNode, currentPath: string }) {
+export default async function BlogLayout({ children, currentPath }: { children: React.ReactNode, currentPath?: string }) {
   const { data }: { data: TCategory[] } = await getAllBlogCategories()
 
   return (

@@ -3,7 +3,7 @@ import { getAllProjectCategories } from '@/app/project/actions'
 import Link from 'next/link'
 import React from 'react'
 
-export default async function ProjectLayout({ children, currentPath }: { children: React.ReactNode, currentPath: string }) {
+export default async function ProjectLayout({ children, currentPath }: { children: React.ReactNode, currentPath?: string }) {
   const { data }: { data: TCategory[] } = await getAllProjectCategories()
 
   return (
