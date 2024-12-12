@@ -4,8 +4,6 @@ import ProjectLayout from '../components/project/project-layout'
 import HydrationWrapper from '../components/project/hydration-wrapper'
 import { getAllProjectPosts } from './actions'
 
-export const dynamic = 'force-dynamic';
-
 const ProjectCategory = async () => {
   const { data: recentProjects } = await getAllProjectPosts();
 

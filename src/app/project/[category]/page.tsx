@@ -3,8 +3,6 @@ import ProjectPosts from '@/app/components/project/project-posts'
 import React from 'react'
 import { getAllProjectPosts, getFilteredProjectPosts } from '../actions'
 
-export const dynamic = 'force-dynamic';
-
 export async function generateStaticParams() {
   const { data: projects } = await getAllProjectPosts();
 
