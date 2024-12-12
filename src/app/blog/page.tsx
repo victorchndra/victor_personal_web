@@ -7,6 +7,8 @@ import HydrationWrapper from '../components/blog/hydration-wrapper'
 export default async function BlogCategory() {
   const { data: latestPosts } = await getAllBlogPosts();
 
+  if (!Array.isArray(latestPosts) || latestPosts.length === 0) return [];
+
   return (
     <BlogLayout>
       {/* <BlogPosts posts={lastestPosts} /> */}

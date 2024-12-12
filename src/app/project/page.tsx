@@ -7,14 +7,7 @@ import { getAllProjectPosts } from './actions'
 const ProjectCategory = async () => {
   const { data: recentProjects } = await getAllProjectPosts();
 
-  // let recentProjects = []
-  // try {
-  //   const { data } = await getAllProjectPosts()
-  //   recentProjects = data || []
-  // } catch (error) {
-  //   console.error("Failed to fetch projects:", error)
-  //   recentProjects = []
-  // }
+  if (!Array.isArray(recentProjects) || recentProjects.length === 0) return [];
 
   return (
     <ProjectLayout>
