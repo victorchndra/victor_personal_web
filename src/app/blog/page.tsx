@@ -5,19 +5,12 @@ import { getAllBlogPosts } from './actions'
 import HydrationWrapper from '../components/blog/hydration-wrapper'
 
 export default async function BlogCategory() {
-  let lastestPosts = []
-  try {
-    const { data } = await getAllBlogPosts()
-    lastestPosts = data || []
-  } catch (error) {
-    console.error("Failed to fetch blog posts:", error)
-    lastestPosts = []
-  }
+  const { data: latestPosts } = await getAllBlogPosts();
 
   return (
     <BlogLayout>
       {/* <BlogPosts posts={lastestPosts} /> */}
-      <HydrationWrapper ssrData={lastestPosts} />
+      <HydrationWrapper ssrData={latestPosts || []} />
     </BlogLayout>
   )
 }
