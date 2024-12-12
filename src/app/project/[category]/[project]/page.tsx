@@ -5,6 +5,8 @@ import DOMPurify from 'isomorphic-dompurify'
 import { getAllProjectPosts, getProjectPost } from '../../actions'
 import moment from 'moment'
 
+export const dynamic = 'force-dynamic';
+
 // Server Static Generation (SSG)
 export async function generateStaticParams() {
   const { data: projects } = await getAllProjectPosts()

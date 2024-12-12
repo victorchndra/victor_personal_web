@@ -6,6 +6,8 @@ import { getAllBlogPosts, getBlogPost } from '../../actions'
 import DOMPurify from 'isomorphic-dompurify'
 import moment from 'moment'
 
+export const dynamic = 'force-dynamic';
+
 // Server Static Generation (SSG)
 export async function generateStaticParams() {
   const { data: posts } = await getAllBlogPosts()
