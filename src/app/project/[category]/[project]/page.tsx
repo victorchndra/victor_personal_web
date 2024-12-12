@@ -9,6 +9,8 @@ import moment from 'moment'
 export async function generateStaticParams() {
   const { data: projects } = await getAllProjectPosts()
 
+  if (!projects || projects.length === 0) return []
+
   return projects.map((project: { category: { slug: string }, slug: string }) => ({
     category: project.category.slug,
     project: project.slug
