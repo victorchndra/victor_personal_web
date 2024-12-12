@@ -4,7 +4,7 @@ export async function getAllProjectCategories() {
   try {
     const res = await fetch(`${process.env.HOST_API}/projectCategory`, {
       method: "GET",
-      cache: "no-cache"
+      // cache: "no-cache"
     })
 
     return res.json()
@@ -17,7 +17,7 @@ export async function getAllProjectPosts() {
   try {
     const res = await fetch(`${process.env.HOST_API}/project`, {
       method: "GET",
-      cache: "no-cache"
+      // cache: "no-cache"
     })
 
     return res.json()
@@ -30,7 +30,7 @@ export async function getFilteredProjectPosts($params: string) {
   try {
     const res = await fetch(`${process.env.HOST_API}/project/${$params}`, {
       method: "GET",
-      cache: "no-cache"
+      // cache: "no-cache"
     })
 
     return res.json()
