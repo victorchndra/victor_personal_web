@@ -19,7 +19,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
   const { category, project } = await params
   const { data: post } = await getProjectPost(category, project)
 
-  const sanitizedContent = DOMPurify.sanitize(post.content)
+  const sanitizedContent = DOMPurify.sanitize(post?.content)
 
   return (
     <section className='flex justify-center'>
@@ -28,16 +28,16 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
         <div className='flex flex-col mt-12 space-y-3 md:space-y-2 elementToFadeInAndOut'>
           {post && (
             <span className='text-sm text-white px-2 py-0.5 font-bold bg-violet-600 w-fit uppercase'>
-              {post.category.name}
+              {post?.category?.name}
             </span>
           )}
-          <span className='text-sm text-zinc-500'>{post && moment(post.created_at).format('MMMM DD, YYYY')}</span>
-          <h1 className='text-xl font-bold'>{post.name}</h1>
-          {post ? post.thumbnail && (
+          <span className='text-sm text-zinc-500'>{post && moment(post?.created_at).format('MMMM DD, YYYY')}</span>
+          <h1 className='text-xl font-bold'>{post?.name}</h1>
+          {post ? post?.thumbnail && (
             <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
               <Image
-                src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post.thumbnail}`}
-                alt={post.name ?? "undefined image"}
+                src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post?.thumbnail}`}
+                alt={post?.name ?? "undefined image"}
                 width={300}
                 height={200}
                 className='object-cover w-full h-full relative'
