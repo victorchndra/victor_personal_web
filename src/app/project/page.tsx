@@ -6,7 +6,7 @@ import { getAllProjectPosts } from './actions'
 
 export const dynamic = 'force-dynamic';
 
-const ProjectCategory = async () => {
+export default async function ProjectCategory() {
   const { data: recentProjects } = await getAllProjectPosts();
 
   if (!Array.isArray(recentProjects) || recentProjects.length === 0) return [];
@@ -18,5 +18,3 @@ const ProjectCategory = async () => {
     </ProjectLayout>
   )
 }
-
-export default ProjectCategory
