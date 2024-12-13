@@ -6,7 +6,6 @@ import { getAllBlogPosts, getBlogPost } from '../../actions'
 import DOMPurify from 'isomorphic-dompurify'
 import moment from 'moment'
 
-export const revalidate = 60;
 export const dynamic = 'force-dynamic';
 
 // Server Static Generation (SSG)

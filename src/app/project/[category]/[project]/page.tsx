@@ -5,13 +5,11 @@ import DOMPurify from 'isomorphic-dompurify'
 import { getAllProjectPosts, getProjectPost } from '../../actions'
 import moment from 'moment'
 
-export const revalidate = 60;
 export const dynamic = 'force-dynamic';
 
 // Server Static Generation (SSG)
 export async function generateStaticParams() {
   const { data: projects } = await getAllProjectPosts()
-  console.log('Fetched projects:', projects); // Untuk `getAllProjectPosts`
 
   if (!projects || projects.length === 0) return []
 
@@ -24,10 +22,6 @@ export async function generateStaticParams() {
 export default async function ProjectDetail({ params }: { params: Promise<{ category: string, project: string }> }) {
   const { category, project } = await params
   const { data: post } = await getProjectPost(category, project)
-
-  console.log('HOST_API:', process.env.HOST_API);
-  console.log('Fetched post:', post); // Untuk `getProjectPost`
-  console.log('Thumbnail URL:', post?.thumbnail);
 
   const sanitizedContent = DOMPurify.sanitize(post?.content)
 
