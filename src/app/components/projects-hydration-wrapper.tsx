@@ -15,8 +15,6 @@ export default function ProjectsHydrationWrapper({ ssrProjects }: { ssrProjects:
     return () => clearTimeout(timer)
   }, [ssrProjects])
 
-  console.log(process.env.NEXT_PUBLIC_BASE_URL_IMAGE)
-
   return (
     <section className='flex justify-center'>
       <div className='w-full max-w-[570px]'>

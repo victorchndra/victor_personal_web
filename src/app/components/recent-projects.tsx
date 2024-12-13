@@ -6,7 +6,6 @@ export const dynamic = 'force-dynamic';
 
 export async function RecentProjects() {
   const { data } = await getAllProjectPosts()
-  console.log('Fetched data for RecentProjects:', data);
 
   if (!data || !Array.isArray(data)) return []
 
