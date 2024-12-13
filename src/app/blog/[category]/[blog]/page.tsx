@@ -43,7 +43,7 @@ export default async function Blog({ params }: { params: Promise<{ category: str
               <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
                 <Image
                   unoptimized
-                  src={`https://admin.victor-chandra.com/storage/${post?.thumbnail}`}
+                  src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post?.thumbnail}`}
                   alt={post?.name ?? "undefined image"}
                   width={300}
                   height={200}

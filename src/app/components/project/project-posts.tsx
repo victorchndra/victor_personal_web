@@ -11,7 +11,7 @@ export default function ProjectPosts({ projects }: { projects: TContent[] | null
           <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
             <Image
               unoptimized
-              src={`https://admin.victor-chandra.com/storage/${post.thumbnail}`}
+              src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post.thumbnail}`}
               alt={post.name}
               width={300}
               height={200}

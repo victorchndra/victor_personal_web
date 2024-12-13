@@ -46,7 +46,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
             <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
               <Image
                 unoptimized
-                src={`https://admin.victor-chandra.com/storage/${post?.thumbnail}`}
+                src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post?.thumbnail}`}
                 alt={post?.name ?? "undefined image"}
                 width={300}
                 height={200}
