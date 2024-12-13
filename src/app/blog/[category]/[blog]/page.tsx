@@ -6,6 +6,7 @@ import { getAllBlogPosts, getBlogPost } from '../../actions'
 import DOMPurify from 'isomorphic-dompurify'
 import moment from 'moment'
 
+export const revalidate = 60;
 export const dynamic = 'force-dynamic';
 
 // Server Static Generation (SSG)
@@ -42,7 +43,6 @@ export default async function Blog({ params }: { params: Promise<{ category: str
             {post && post?.thumbnail && (
               <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
                 <Image
-                  unoptimized
                   src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post?.thumbnail}`}
                   alt={post?.name ?? "undefined image"}
                   width={300}

@@ -7,7 +7,7 @@ export const dynamic = 'force-dynamic';
 export async function LatestPosts() {
   const { data } = await getAllBlogPosts()
 
-  if (!data || !Array.isArray(data)) return (<div>No posts available</div>)
+  if (!data || !Array.isArray(data)) return []
 
   const ssrPosts = (data || []).slice(0, 3)
 

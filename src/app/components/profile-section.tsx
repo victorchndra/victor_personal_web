@@ -8,7 +8,6 @@ export const ProfileSection = () => {
       <div className="w-full max-w-[570px] flex gap-4">
         {/* <div className="h-16 w-16 rounded-full bg-gray-200 flex-shrink-0" /> */}
         <Image
-          unoptimized
           src={avatar}
           alt='avatar'
           width={64}

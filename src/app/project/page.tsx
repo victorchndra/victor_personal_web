@@ -4,6 +4,7 @@ import ProjectLayout from '../components/project/project-layout'
 import HydrationWrapper from '../components/project/hydration-wrapper'
 import { getAllProjectPosts } from './actions'
 
+export const revalidate = 60;
 export const dynamic = 'force-dynamic';
 
 export default async function ProjectCategory() {

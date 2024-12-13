@@ -3,6 +3,7 @@ import { TCategory } from '@/app/blog/types'
 import Link from 'next/link'
 import React from 'react'
 
+export const revalidate = 60;
 export const dynamic = 'force-dynamic';
 
 export default async function BlogLayout({ children, currentPath }: { children: React.ReactNode, currentPath?: string }) {

@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
       {
         protocol: 'https',
         hostname: 'admin.victor-chandra.com',
-        port: '',
+        // port: '',
         pathname: '/storage/**'
       }
     ]

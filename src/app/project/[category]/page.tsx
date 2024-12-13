@@ -3,6 +3,7 @@ import ProjectPosts from '@/app/components/project/project-posts'
 import React from 'react'
 import { getAllProjectPosts, getFilteredProjectPosts } from '../actions'
 
+export const revalidate = 60;
 export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {

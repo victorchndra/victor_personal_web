@@ -3,6 +3,7 @@ import BlogLayout from '@/app/components/blog/blog-layout'
 import { getAllBlogPosts, getFilteredBlogPosts } from '../actions'
 import BlogPosts from '@/app/components/blog/blog-posts'
 
+export const revalidate = 60;
 export const dynamic = 'force-dynamic';
 
 export async function generateStaticParams() {
