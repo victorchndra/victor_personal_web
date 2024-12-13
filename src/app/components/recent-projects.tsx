@@ -2,6 +2,9 @@ import React from 'react'
 import { getAllProjectPosts } from '../project/actions'
 import ProjectsHydrationWrapper from './projects-hydration-wrapper'
 
+export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+
 export const RecentProjects = async () => {
   const { data } = await getAllProjectPosts()
 

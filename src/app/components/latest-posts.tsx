@@ -2,6 +2,9 @@ import React from 'react'
 import { getAllBlogPosts } from '../blog/actions'
 import PostsHydrationWrapper from './posts-hydration-wrapper'
 
+export const revalidate = 60;
+export const dynamic = 'force-dynamic';
+
 export const LatestPosts = async () => {
   const { data } = await getAllBlogPosts()
 
