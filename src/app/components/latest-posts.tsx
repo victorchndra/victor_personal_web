@@ -4,7 +4,7 @@ import PostsHydrationWrapper from './posts-hydration-wrapper'
 
 export const dynamic = 'force-dynamic';
 
-export const LatestPosts = async () => {
+export async function LatestPosts() {
   const { data } = await getAllBlogPosts()
 
   if (!data || !Array.isArray(data)) return []

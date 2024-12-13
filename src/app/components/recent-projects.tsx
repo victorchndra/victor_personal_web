@@ -4,7 +4,7 @@ import ProjectsHydrationWrapper from './projects-hydration-wrapper'
 
 export const dynamic = 'force-dynamic';
 
-export const RecentProjects = async () => {
+export async function RecentProjects() {
   const { data } = await getAllProjectPosts()
 
   if (!data || !Array.isArray(data)) return []
