@@ -26,6 +26,7 @@ export default function ProjectsHydrationWrapper({ ssrProjects }: { ssrProjects:
           {hydratedProjects ? hydratedProjects.map((project, index) => (
             <Link key={index} href={`/project/${project.category.slug}/${project.slug}`} className='group w-[calc(50%-8px)] elementToFadeInAndOut'>
               <div className='space-y-2'>
+                {`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${project.thumbnail}`}
                 <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'>
                   <Image
                     src={project.thumbnail ? `${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${project.thumbnail}` : '/default-image.jpg'}
