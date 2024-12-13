@@ -28,6 +28,7 @@ export default function ProjectsHydrationWrapper({ ssrProjects }: { ssrProjects:
               <div className='space-y-2'>
                 <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden'>
                   <Image
+                    unoptimized
                     src={project.thumbnail ? `${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${project.thumbnail}` : '/default-image.jpg'}
                     alt={project.name}
                     width={300}

@@ -38,6 +38,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
           {post ? post?.thumbnail && (
             <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
               <Image
+                unoptimized
                 src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post?.thumbnail}`}
                 alt={post?.name ?? "undefined image"}
                 width={300}

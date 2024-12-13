@@ -10,6 +10,7 @@ export default function ProjectPosts({ projects }: { projects: TContent[] | null
         <Link key={index} href={`/project/${post.category.slug}/${post.slug}`} className='group w-[calc(50%-8px)] mb-4 elementToFadeInAndOut'>
           <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
             <Image
+              unoptimized
               src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post.thumbnail}`}
               alt={post.name}
               width={300}
