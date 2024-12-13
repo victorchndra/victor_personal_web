@@ -2,7 +2,7 @@
 
 export async function getAllProjectCategories() {
   try {
-    const res = await fetch(`${process.env.HOST_API}/projectCategory`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_API}/projectCategory`, {
       method: "GET",
       cache: "no-store"
     })
@@ -15,7 +15,7 @@ export async function getAllProjectCategories() {
 
 export async function getAllProjectPosts() {
   try {
-    const res = await fetch(`${process.env.HOST_API}/project`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_API}/project`, {
       method: "GET",
       cache: "no-store"
     })
@@ -28,7 +28,7 @@ export async function getAllProjectPosts() {
 
 export async function getFilteredProjectPosts($params: string) {
   try {
-    const res = await fetch(`${process.env.HOST_API}/project/${$params}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_API}/project/${$params}`, {
       method: "GET",
       cache: "no-store"
     })
@@ -41,7 +41,7 @@ export async function getFilteredProjectPosts($params: string) {
 
 export async function getProjectPost($category: string, $project: string) {
   try {
-    const res = await fetch(`${process.env.HOST_API}/project/${$category}/${$project}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST_API}/project/${$category}/${$project}`, {
       method: "GET",
       cache: "no-store"
     })
