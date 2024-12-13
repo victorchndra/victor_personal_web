@@ -5,6 +5,8 @@ import DOMPurify from 'isomorphic-dompurify'
 import { getAllProjectPosts, getProjectPost } from '../../actions'
 import moment from 'moment'
 
+export const dynamic = 'force-dynamic';
+
 // Server Static Generation (SSG)
 export async function generateStaticParams() {
   const { data: projects } = await getAllProjectPosts()
@@ -44,7 +46,7 @@ export default async function ProjectDetail({ params }: { params: Promise<{ cate
             <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
               <Image
                 unoptimized
-                src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post?.thumbnail}`}
+                src={`https://admin.victor-chandra.com/storage/${post?.thumbnail}`}
                 alt={post?.name ?? "undefined image"}
                 width={300}
                 height={200}

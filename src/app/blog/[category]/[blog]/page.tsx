@@ -6,6 +6,8 @@ import { getAllBlogPosts, getBlogPost } from '../../actions'
 import DOMPurify from 'isomorphic-dompurify'
 import moment from 'moment'
 
+export const dynamic = 'force-dynamic';
+
 // Server Static Generation (SSG)
 export async function generateStaticParams() {
   const { data: posts } = await getAllBlogPosts()
@@ -41,7 +43,7 @@ export default async function Blog({ params }: { params: Promise<{ category: str
               <div className='aspect-[3/2] bg-gray-200 rounded-lg overflow-hidden mb-2'>
                 <Image
                   unoptimized
-                  src={`${process.env.NEXT_PUBLIC_BASE_URL_IMAGE}/${post?.thumbnail}`}
+                  src={`https://admin.victor-chandra.com/storage/${post?.thumbnail}`}
                   alt={post?.name ?? "undefined image"}
                   width={300}
                   height={200}
